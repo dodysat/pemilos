@@ -1,7 +1,7 @@
 # Dockerfile for CodeIgniter 3 Project with Composer
 
 # Use the official PHP image with Apache
-FROM php:7.4-apache
+FROM php:7.1-apache
 
 # Install necessary PHP extensions for CodeIgniter, MySQL, and GD
 RUN apt-get update && apt-get install -y \
