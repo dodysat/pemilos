@@ -38,7 +38,7 @@ CREATE TABLE `tb_admin` (
 --
 
 INSERT INTO `tb_admin` (`username`, `password`) VALUES
-('admin', 'd10fb4f1dd9fa066f7ae280b4b3ffadc');
+('admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
