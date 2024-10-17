@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codeigniter_app
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    networks:
+      - ci_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 0923rh8923urihlhwehwe
+    depends_on:
+      - db
+    networks:
+      - ci_network
+
+  db:
+    image: mariadb:10.5
+    container_name: mariadb_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 0923rh8923urihlhwehwe
+      MYSQL_DATABASE: pemilos
+      MYSQL_USER: user
+      MYSQL_PASSWORD: jwef8934y398fn9wefw
+    volumes:
+      - ./pemilos.sql:/docker-entrypoint-initdb.d/pemilos.sql
+      - data:/var/lib/mysql
+    networks:
+      - ci_network
+
+networks:
+  ci_network:
+    driver: bridge
+volumes:
+  data:
